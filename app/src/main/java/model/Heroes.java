@@ -4,14 +4,17 @@ public class Heroes {
     private String _id;
     private String name;
     private String desc;
+    private String image;
+
 
     public Heroes(String _id) {
         this._id = _id;
     }
 
-    public Heroes(String name, String desc) {
+    public Heroes(String name, String desc, String image) {
         this.name = name;
         this.desc = desc;
+        this.image=image;
     }
 
 
@@ -37,5 +40,12 @@ public class Heroes {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public String getImage() {
+        return image;
+    }
+    public void setImage(String image) {
+        this.image = image;
     }
 }
