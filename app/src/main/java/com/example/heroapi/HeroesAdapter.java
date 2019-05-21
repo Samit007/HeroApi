@@ -1,4 +1,4 @@
-package adapter;
+package com.example.heroapi;
 
 import android.content.Context;
 import android.graphics.BitmapFactory;
@@ -11,19 +11,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.heroapi.R;
-
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
 import model.Heroes;
 import url.Url;
 
-
-public class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.ViewHolder> {
+class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.ViewHolder> {
 
     private List<Heroes> heroesList;
     private Context context;
@@ -41,10 +36,6 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.ViewHolder
         return new ViewHolder(view);
     }
 
-    private void StrictMode(){
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-    }
 
     @Override
     public void onBindViewHolder(@NonNull HeroesAdapter.ViewHolder viewHolder, int i) {
@@ -64,7 +55,7 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return 0;
+        return heroesList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -76,5 +67,10 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.ViewHolder
             tvName=itemView.findViewById(R.id.tvName);
             tvDesc=itemView.findViewById(R.id.tvDesc);
         }
+    }
+
+    private void StrictMode(){
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
     }
 }

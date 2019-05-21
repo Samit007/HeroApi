@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import adapter.HeroesAdapter;
+
 import heroesapi.HeroesAPI;
 import model.Heroes;
 import retrofit2.Call;
