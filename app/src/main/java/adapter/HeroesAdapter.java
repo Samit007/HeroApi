@@ -64,7 +64,7 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return 0;
+        return heroesList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
