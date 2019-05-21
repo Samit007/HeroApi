@@ -4,13 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".RecyclerHeroes"
+    tools:showIn="@layout/activity_recycler_heroes"
     android:orientation="vertical">
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyclerView"/>
-    <include layout="@layout/content_dashboard_activity" />
+        android:id="@+id/recyclerView">
+
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>
