@@ -29,7 +29,7 @@ public class RecyclerHeroes extends AppCompatActivity {
         recyclerView=findViewById(R.id.recyclerView);
 //        heroesList= new ArrayList<>();
         HeroesAPI heroesAPI = Url.getInstance().create(HeroesAPI.class);
-        Call<List<Heroes>> call = heroesAPI.getAllEmployee();
+        Call<List<Heroes>> call = heroesAPI.getAllEmployee(Url.Cookie);
         call.enqueue(new Callback<List<Heroes>>() {
             @Override
             public void onResponse(Call<List<Heroes>> call, Response<List<Heroes>> response) {

@@ -11,7 +11,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,7 +23,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import heroesapi.HeroesAPI;
-import model.Heroes;
 import model.ImageResponse;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -32,13 +30,11 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import url.Url;
 
-public class MainActivity extends AppCompatActivity {
+public class AddActivity extends AppCompatActivity {
     private EditText etname, etdesc;
-    private Button btnsave;
+    private Button btnAdd;
     private ImageView imgProfile;
     String imagePath;
     String imageName;
@@ -46,18 +42,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_add);
 
         etname = findViewById(R.id.etname);
         etdesc = findViewById(R.id.etdesc);
-        btnsave = findViewById(R.id.btnsave);
+        btnAdd = findViewById(R.id.btnAdd);
         imgProfile = findViewById(R.id.imgPhoto);
 
-        btnsave.setOnClickListener(new View.OnClickListener() {
+        btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Save();
-                Intent intent = new Intent(MainActivity.this,firstActivity.class);
+                Intent intent = new Intent(AddActivity.this,firstActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -145,24 +141,24 @@ public class MainActivity extends AppCompatActivity {
         map.put("image", imageName);
 
         HeroesAPI heroesAPI = Url.getInstance().create(HeroesAPI.class);
-        Call<Void> heroesCall = heroesAPI.addHero(map);
+        Call<Void> heroesCall = heroesAPI.addHero(Url.Cookie,map);
         heroesCall.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(MainActivity.this, "code " + response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddActivity.this, "code " + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Toast.makeText(MainActivity.this, "Successfully Added", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddActivity.this, "Successfully Added", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddActivity.this, "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
-        Intent intent = new Intent(MainActivity.this,RecyclerHeroes.class);
+        Intent intent = new Intent(AddActivity.this,RecyclerHeroes.class);
         startActivity(intent);
         finish();
     }

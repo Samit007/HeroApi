@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="20dp"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".AddActivity">
 
     <ImageView
         android:layout_width="250dp"
@@ -33,7 +33,7 @@
         android:textSize="30sp" />
 
     <Button
-        android:id="@+id/btnsave"
+        android:id="@+id/btnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
