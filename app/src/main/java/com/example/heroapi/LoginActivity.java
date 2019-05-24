@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         String username =etuname.getText().toString().trim();
         String password =etpass.getText().toString().trim();
 
-        Call<LoginSignupResponse>usersCall=heroesAPI.checkUser(username,password);
+        Call<LoginSignupResponse> usersCall=heroesAPI.checkUser(username,password);
 
         usersCall.enqueue(new Callback<LoginSignupResponse>() {
             @Override

@@ -39,6 +39,7 @@ public interface HeroesAPI {
     @GET("heroes")
     Call<List<Heroes>>getAllEmployee(@Header("Cookie") String cookie);
 
-   @GET("users/login")
+    @FormUrlEncoded
+   @POST("users/login")
     Call<LoginSignupResponse>checkUser(@Field("username") String username,@Field("password") String password);
 }
